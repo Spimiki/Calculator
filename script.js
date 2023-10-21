@@ -4,8 +4,6 @@ const clearButton = document.getElementById("clearButton");
 
 const plusMinusButton = document.getElementById("plusMinusButton");
 
-const percentButton = document.getElementById("percentButton");
-
 const zeroButton = document.getElementById("zeroButton");
 const oneButton = document.getElementById("oneButton");
 const twoButton = document.getElementById("twoButton");
@@ -23,9 +21,9 @@ const minusButton = document.getElementById("minusButton");
 const timesButton = document.getElementById("timesButton");
 const divideButton = document.getElementById("divideButton");
 
+const percentButton = document.getElementById("percentButton");
+
 const dotButton = document.getElementById("dotButton");
-
-
 
 let currentValue = 0;
 
@@ -59,8 +57,6 @@ nineButton.addEventListener("click", () => setValue(9));
 
 dotButton.addEventListener("click", () => setValue("."));
 
-
-
 function setValue(value) {
   result.innerHTML == 0
     ? (result.innerHTML = value)
@@ -75,19 +71,18 @@ function handleFunctionClick(operation) {
   for (let i = 0; i < array.length; i++) {
     currentValue += array[i];
   }
-  
 }
 
 function sum() {
-  currentValue += `${result.innerHTML==currentValue?null:result.innerHTML}`;
+  currentValue += `${
+    result.innerHTML == currentValue ? null : result.innerHTML
+  }`;
   currentValue = stringMath(currentValue);
   result.innerHTML = /[0-9]/.test(currentValue) ? currentValue : "error";
   array = [];
-  
 }
 
 function reset() {
   result.innerHTML = 0;
   array = [];
 }
-
