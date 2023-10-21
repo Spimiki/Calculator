@@ -25,12 +25,14 @@ const divideButton = document.getElementById("divideButton");
 
 const dotButton = document.getElementById("dotButton");
 
+
+
 let currentValue = 0;
 
 let array = [];
 
 clearButton.addEventListener("click", () => {
-  reset()
+  reset();
 });
 
 plusMinusButton.addEventListener("click", () => {
@@ -57,6 +59,8 @@ nineButton.addEventListener("click", () => setValue(9));
 
 dotButton.addEventListener("click", () => setValue("."));
 
+
+
 function setValue(value) {
   result.innerHTML == 0
     ? (result.innerHTML = value)
@@ -66,21 +70,24 @@ function setValue(value) {
 function handleFunctionClick(operation) {
   array.push(parseFloat(result.innerHTML));
   array.push(operation);
-  reset();
+  result.innerHTML = 0;
   currentValue = 0;
   for (let i = 0; i < array.length; i++) {
     currentValue += array[i];
   }
-  console.log(array);
+  
 }
 
 function sum() {
-  currentValue += `${result.innerHTML}`;
-  currentValue = eval(currentValue);
+  currentValue += `${result.innerHTML==currentValue?null:result.innerHTML}`;
+  currentValue = stringMath(currentValue);
   result.innerHTML = /[0-9]/.test(currentValue) ? currentValue : "error";
   array = [];
+  
 }
 
 function reset() {
   result.innerHTML = 0;
+  array = [];
 }
+
