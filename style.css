@@ -1,0 +1,111 @@
+:root {
+  --calculator__body-color: #676675;
+  --calculator__body-secondary: #c4c0b1;
+  --calculator__screen-color: #c2e3c5;
+  --bg-color: #d2d3d4;
+
+  --body-borderRadius: 1.8rem;
+  --button-borderRadius: 0.8rem;
+
+  --button-colorTopRow: #8d93cf;
+  --button-colorRightCol: #f47b84;
+  --button-colorDefault: #84829b;
+
+  --screenTextSecondaryColor: #737382;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator__body {
+  aspect-ratio: 1/1.68;
+  border-radius: var(--body-borderRadius);
+  background-color: var(--calculator__body-color);
+  min-width: max-content;
+  min-height: max-content;
+  width: min(25rem, 85vw);
+  max-height: 42rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator__body-top {
+  padding: 2rem 2rem 0rem;
+  height: 25%;
+}
+
+.calculator__body-screen {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  border-radius: 0.8rem;
+  background-color: var(--calculator__screen-color);
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.result {
+  max-width: 280px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 3rem;
+  padding: 0.2rem 1.2rem 0.8rem;
+}
+
+.calculator__body-bottom {
+  height: 75%;
+  width: 100%;
+}
+
+.calculator__body-keyboard {
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: min(1.2rem,4vw);
+  flex-direction: column;
+  height: 100%;
+}
+
+.calculator__button {
+  aspect-ratio: 1/1;
+  font-size: 1.2rem;
+  color: whitesmoke;
+  border-radius: var(--button-borderRadius);
+  width: min(4.2rem, 14vw);
+  background-color: var(--button-defaultColor);
+}
+
+.keyboard__row {
+  display: flex;
+  justify-content: space-between;
+  gap: min(1.2rem,4vw);
+}
+
+.double {
+  width: min(9.4rem, 32vw);
+  height: min(4.2rem, 14vw);
+}
+
+.top > button {
+  background-color: var(--button-colorTopRow);
+}
+
+.right {
+  background-color: var(--button-colorRightCol) !important;
+}
