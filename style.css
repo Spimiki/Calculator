@@ -60,7 +60,7 @@ body {
 }
 
 .result {
-  max-width: 280px;
+  max-width: min(280px, 80vw);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
