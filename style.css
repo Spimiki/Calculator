@@ -91,7 +91,7 @@ body {
   color: whitesmoke;
   border-radius: var(--button-borderRadius);
   width: min(4.2rem, 14vw);
-  background-color: var(--button-defaultColor);
+  background-color: var(--button-colorDefault);
 }
 
 .keyboard__row {
