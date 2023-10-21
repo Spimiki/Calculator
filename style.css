@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/ds-digital');
+
 :root {
   --calculator__body-color: #676675;
   --calculator__body-secondary: #c4c0b1;
@@ -21,6 +23,7 @@
 
 body {
   background-color: var(--bg-color);
+  font-family: 'DS-Digital', sans-serif;
 }
 
 .container {
@@ -60,7 +63,7 @@ body {
 }
 
 .result {
-  max-width: min(280px, 80vw);
+  max-width: min(280px, calc(85vw - 7rem));
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
