@@ -4,22 +4,9 @@ const clearButton = document.getElementById("clearButton");
 
 const plusMinusButton = document.getElementById("plusMinusButton");
 
-const zeroButton = document.getElementById("zeroButton");
-const oneButton = document.getElementById("oneButton");
-const twoButton = document.getElementById("twoButton");
-const threeButton = document.getElementById("threeButton");
-const fourButton = document.getElementById("fourButton");
-const fiveButton = document.getElementById("fiveButton");
-const sixButton = document.getElementById("sixButton");
-const sevenButton = document.getElementById("sevenButton");
-const eightButton = document.getElementById("eightButton");
-const nineButton = document.getElementById("nineButton");
-
-const plusButton = document.getElementById("plusButton");
 const sumButton = document.getElementById("sumButton");
-const minusButton = document.getElementById("minusButton");
-const timesButton = document.getElementById("timesButton");
-const divideButton = document.getElementById("divideButton");
+
+const buttons = document.getElementsByName("button");
 
 const percentButton = document.getElementById("percentButton");
 
@@ -39,10 +26,14 @@ plusMinusButton.addEventListener("click", () => {
 
 sumButton.addEventListener("click", () => sum());
 
-plusButton.addEventListener("click", () => handleFunctionClick(`+`));
-minusButton.addEventListener("click", () => handleFunctionClick(`-`));
-timesButton.addEventListener("click", () => handleFunctionClick(`*`));
-divideButton.addEventListener("click", () => handleFunctionClick(`/`));
+buttons.forEach(function (button) {
+  button.addEventListener("click", () => {
+    /[0-9]/.test(button.value)
+      ? setValue(button.value)
+      : handleFunctionClick(button.value);
+  });
+});
+
 percentButton.addEventListener("click", () => {
   if (array[array.length - 1] == "+" || array[array.length - 1] == "-") {
     result.innerHTML = array[array.length - 2] * (result.innerHTML / 100);
@@ -51,17 +42,6 @@ percentButton.addEventListener("click", () => {
     result.innerHTML = result.innerHTML / 100;
   }
 });
-
-zeroButton.addEventListener("click", () => setValue(0));
-oneButton.addEventListener("click", () => setValue(1));
-twoButton.addEventListener("click", () => setValue(2));
-threeButton.addEventListener("click", () => setValue(3));
-fourButton.addEventListener("click", () => setValue(4));
-fiveButton.addEventListener("click", () => setValue(5));
-sixButton.addEventListener("click", () => setValue(6));
-sevenButton.addEventListener("click", () => setValue(7));
-eightButton.addEventListener("click", () => setValue(8));
-nineButton.addEventListener("click", () => setValue(9));
 
 dotButton.addEventListener("click", () => setValue("."));
 
