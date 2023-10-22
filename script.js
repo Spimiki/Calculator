@@ -43,6 +43,24 @@ plusButton.addEventListener("click", () => handleFunctionClick(`+`));
 minusButton.addEventListener("click", () => handleFunctionClick(`-`));
 timesButton.addEventListener("click", () => handleFunctionClick(`*`));
 divideButton.addEventListener("click", () => handleFunctionClick(`/`));
+percentButton.addEventListener("click", () => {
+  if (array[array.length - 1] == "+") {
+    result.innerHTML =
+      array[array.length - 2] +
+      array[array.length - 2] * (result.innerHTML / 100);
+  }
+  if (array[array.length - 1] == "-") {
+    result.innerHTML =
+      array[array.length - 2] -
+      array[array.length - 2] * (result.innerHTML / 100);
+  }
+  if (array[array.length - 1] == "*") {
+    result.innerHTML = array[array.length - 2] * (result.innerHTML / 100);
+  }
+  if (array[array.length - 1] == "/") {
+    result.innerHTML = array[array.length - 2] / (result.innerHTML / 100);
+  }
+});
 
 zeroButton.addEventListener("click", () => setValue(0));
 oneButton.addEventListener("click", () => setValue(1));
