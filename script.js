@@ -44,21 +44,11 @@ minusButton.addEventListener("click", () => handleFunctionClick(`-`));
 timesButton.addEventListener("click", () => handleFunctionClick(`*`));
 divideButton.addEventListener("click", () => handleFunctionClick(`/`));
 percentButton.addEventListener("click", () => {
-  if (array[array.length - 1] == "+") {
-    result.innerHTML =
-      array[array.length - 2] +
-      array[array.length - 2] * (result.innerHTML / 100);
-  }
-  if (array[array.length - 1] == "-") {
-    result.innerHTML =
-      array[array.length - 2] -
-      array[array.length - 2] * (result.innerHTML / 100);
-  }
-  if (array[array.length - 1] == "*") {
+  if (array[array.length - 1] == "+" || array[array.length - 1] == "-") {
     result.innerHTML = array[array.length - 2] * (result.innerHTML / 100);
   }
-  if (array[array.length - 1] == "/") {
-    result.innerHTML = array[array.length - 2] / (result.innerHTML / 100);
+  if (array[array.length - 1] == "*" || array[array.length - 1] == "/") {
+    result.innerHTML = result.innerHTML / 100;
   }
 });
 
@@ -83,7 +73,7 @@ function setValue(value) {
 
 function handleFunctionClick(operation) {
   array.push(parseFloat(result.innerHTML));
-  array.push(operation);
+  operation && array.push(operation);
   result.innerHTML = 0;
   currentValue = 0;
   for (let i = 0; i < array.length; i++) {
