@@ -116,3 +116,9 @@ body {
 .right {
   background-color: var(--button-colorRightCol) !important;
 }
+
+.calculation{
+  padding: 0.2rem 1.2rem 0rem;
+  font-size: 1.6rem;  
+  color: rgb(0,0,0,0.5);
+}

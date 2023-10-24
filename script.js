@@ -1,49 +1,26 @@
 const result = document.getElementById("result");
-
-const clearButton = document.getElementById("clearButton");
-
-const plusMinusButton = document.getElementById("plusMinusButton");
-
-const sumButton = document.getElementById("sumButton");
-
 const buttons = document.getElementsByName("button");
-
 const percentButton = document.getElementById("percentButton");
-
-const dotButton = document.getElementById("dotButton");
-
+const topScreen = document.getElementById("calculation");
 let currentValue = 0;
-
 let array = [];
-
-clearButton.addEventListener("click", () => {
-  reset();
-});
-
-plusMinusButton.addEventListener("click", () => {
-  result.innerHTML *= -1;
-});
-
-sumButton.addEventListener("click", () => sum());
+let functions = ["clear", "plusMinus", "sum", "dot", "percentButton"];
 
 buttons.forEach(function (button) {
   button.addEventListener("click", () => {
-    /[0-9]/.test(button.value)
-      ? setValue(button.value)
-      : handleFunctionClick(button.value);
+    if (functions.includes(button.value)) {
+      button.value == "plusMinus" && (result.innerHTML *= -1);
+      button.value == "clear" && clear();
+      button.value == "sum" && sum();
+      button.value == "dot" && setValue(".");
+      button.value == "percentButton" && handlePercentClick();
+    } else {
+      /[0-9]/.test(button.value)
+        ? setValue(button.value)
+        : handleOperationClick(button.value);
+    }
   });
 });
-
-percentButton.addEventListener("click", () => {
-  if (array[array.length - 1] == "+" || array[array.length - 1] == "-") {
-    result.innerHTML = array[array.length - 2] * (result.innerHTML / 100);
-  }
-  if (array[array.length - 1] == "*" || array[array.length - 1] == "/") {
-    result.innerHTML = result.innerHTML / 100;
-  }
-});
-
-dotButton.addEventListener("click", () => setValue("."));
 
 function setValue(value) {
   result.innerHTML == 0
@@ -51,7 +28,16 @@ function setValue(value) {
     : (result.innerHTML += value);
 }
 
-function handleFunctionClick(operation) {
+function handlePercentClick() {
+  if (array[array.length - 1] == "+" || array[array.length - 1] == "-") {
+    result.innerHTML = array[array.length - 2] * (result.innerHTML / 100);
+  }
+  if (array[array.length - 1] == "*" || array[array.length - 1] == "/") {
+    result.innerHTML = result.innerHTML / 100;
+  }
+}
+
+function handleOperationClick(operation) {
   array.push(parseFloat(result.innerHTML));
   operation && array.push(operation);
   result.innerHTML = 0;
@@ -59,6 +45,16 @@ function handleFunctionClick(operation) {
   for (let i = 0; i < array.length; i++) {
     currentValue += array[i];
   }
+  topScreenUpdate();
+}
+
+function topScreenUpdate() {
+  topScreen.innerHTML =
+    topScreen.innerHTML == '0'
+      ? (topScreen.innerHTML = "")
+      : array.length
+      ? currentValue
+      : array.forEach((item) => item);
 }
 
 function sum() {
@@ -67,10 +63,11 @@ function sum() {
   }`;
   currentValue = stringMath(currentValue);
   result.innerHTML = /[0-9]/.test(currentValue) ? currentValue : "error";
+  topScreenUpdate();
   array = [];
 }
 
-function reset() {
+function clear() {
   result.innerHTML = 0;
   array = [];
 }
